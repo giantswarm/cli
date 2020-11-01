@@ -1,4 +1,4 @@
-package printer
+package output
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-type Config struct {
+type PrinterConfig struct {
 	Err io.Writer
 	Out io.Writer
 }
@@ -19,9 +19,7 @@ type Printer struct {
 	out io.Writer
 }
 
-var _ Interface = &Printer{}
-
-func New(config Config) (*Printer, error) {
+func NewPrinter(config PrinterConfig) (*Printer, error) {
 	if config.Err == nil {
 		config.Err = os.Stderr
 	}
