@@ -19,6 +19,8 @@ type Printer struct {
 	out io.Writer
 }
 
+var _ Interface = &Printer{}
+
 func NewPrinter(config PrinterConfig) (*Printer, error) {
 	if config.Err == nil {
 		config.Err = os.Stderr
